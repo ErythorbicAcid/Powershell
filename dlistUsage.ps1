@@ -1,5 +1,6 @@
 ### Grabs all dlists and runs a message trace to see if there is content there. It then compares the list of dlists that received email and removes those from
 ### the $allGroups alias. $notUsed is an array of all the unused dlists.
+$path = "$home\Documents\WindowsPowerShell"
 $allGroups = Get-DistributionGroup -ResultSize 'Unlimited'
 $usedGroups = $allGroups | %{Get-MessageTrace -RecipientAddress $_.PrimarySmtpAddress -StartDate ([DateTime]::Today.AddDays(-7)) -EndDate ([DateTime]::Today) ; `
     Start-Sleep -Milliseconds 500} | select 'RecipientAddress' -Unique

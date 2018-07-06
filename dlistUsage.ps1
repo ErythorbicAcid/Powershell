@@ -1,10 +1,3 @@
-### Connect to O365
-$path = "$home\Documents\WindowsPowerShell"
-$user = '700000139@internal.gensuite.com'
-$pass = Get-Content "$path\Files\pword.txt" | ConvertTo-SecureString
-$cred = New-Object -TypeName 'System.Management.Automation.PSCredential' -ArgumentList $user, $pass
-$Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ `
-    -Credential $cred -Authentication Basic -AllowRedirection ; Import-PSSession $Session
 ### Grabs all dlists and runs a message trace to see if there is content there. It then compares the list of dlists that received email and removes those from
 ### the $allGroups alias. $notUsed is an array of all the unused dlists.
 $allGroups = Get-DistributionGroup -ResultSize 'Unlimited'
